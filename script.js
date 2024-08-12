@@ -1,12 +1,8 @@
 // public/script.js
 
-// Replace this with your actual Finazon API key
-const apiKey = 'eef3d37cdba74968bb848eafe07c65desu';
-
-// Function to fetch stock data from the serverless function
 async function fetchStockData() {
     try {
-        const response = await fetch('/.netlify/functions/stock-data?symbol=INTC'); // Adjust the symbol if needed
+        const response = await fetch('/.netlify/functions/stock-data?symbol=AAPL'); // Adjust the symbol if needed
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -17,20 +13,24 @@ async function fetchStockData() {
     }
 }
 
-// Function to display stock data
 function displayStockData(data) {
     const stockSymbolElement = document.getElementById('stock-symbol');
     const stockTimeElement = document.getElementById('stock-time');
     const stockPriceElement = document.getElementById('stock-price');
     
-    // Adjust based on the structure of Finazon API response
-    const stock = data.data; // This assumes `data.data` contains the relevant stock info
-    const latestData = stock[0]; // Assuming the latest data is at index 0; adjust if necessary
+    // Polygon's response format might include fields like `last` for the latest price
+    // Check the exact structure in the Polygon API documentation
+    const latestQuote = data.results[0]; // Adjust this if the structure differs
+    if (!latestQuote) {
+        stockSymbolElement.textContent = 'No data available';
+        stockTimeElement.textContent = '';
+        stockPriceElement.textContent = '';
+        return;
+    }
     
-    stockSymbolElement.textContent = `Symbol: ${latestData.symbol}`;
-    stockTimeElement.textContent = `Time: ${latestData.timestamp}`;
-    stockPriceElement.textContent = `Price: ${latestData.price}`; // Adjust field name if needed
+    stockSymbolElement.textContent = `Symbol: ${latestQuote.T || 'N/A'}`;
+    stockTimeElement.textContent = `Time: ${latestQuote.t || 'N/A'}`;
+    stockPriceElement.textContent = `Price: ${latestQuote.c || 'N/A'}`; // Adjust field names if needed
 }
 
-// Fetch stock data when the page loads
 fetchStockData();
