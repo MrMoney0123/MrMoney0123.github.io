@@ -1,23 +1,15 @@
 // public/script.js
 
 // Replace this with your actual Finazon API key
-const apiKey = 'eef3d37cdba74968bb848eafe07c65desuY';
+const apiKey = 'eef3d37cdba74968bb848eafe07c65desu';
 
+// Function to fetch stock data from the serverless function
 async function fetchStockData() {
     try {
-        // Construct the API URL for Finazon
-        const response = await fetch('https://api.finazon.com/stocks?symbol=INTC', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${eef3d37cdba74968bb848eafe07c65desu}`,
-                'Content-Type': 'application/json'
-            }
-        });
-
+        const response = await fetch('/.netlify/functions/stock-data?symbol=INTC'); // Adjust the symbol if needed
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-
         const data = await response.json();
         displayStockData(data);
     } catch (error) {
@@ -25,22 +17,20 @@ async function fetchStockData() {
     }
 }
 
+// Function to display stock data
 function displayStockData(data) {
-    const stockDataElement = document.getElementById('stock-data');
-
-    // Adjust based on the structure of Finazon API response
-    // Example assumes response contains a `data` object with the required details
-    const stock = data.data; // Adjust this based on actual response structure
+    const stockSymbolElement = document.getElementById('stock-symbol');
+    const stockTimeElement = document.getElementById('stock-time');
+    const stockPriceElement = document.getElementById('stock-price');
     
-    stockDataElement.innerHTML = `
-        <p>Symbol: ${stock.symbol}</p>
-        <p>Time: ${stock.timestamp}</p>
-        <p>Open: ${stock.open}</p>
-        <p>High: ${stock.high}</p>
-        <p>Low: ${stock.low}</p>
-        <p>Close: ${stock.close}</p>
-        <p>Volume: ${stock.volume}</p>
-    `;
+    // Adjust based on the structure of Finazon API response
+    const stock = data.data; // This assumes `data.data` contains the relevant stock info
+    const latestData = stock[0]; // Assuming the latest data is at index 0; adjust if necessary
+    
+    stockSymbolElement.textContent = `Symbol: ${latestData.symbol}`;
+    stockTimeElement.textContent = `Time: ${latestData.timestamp}`;
+    stockPriceElement.textContent = `Price: ${latestData.price}`; // Adjust field name if needed
 }
 
+// Fetch stock data when the page loads
 fetchStockData();
