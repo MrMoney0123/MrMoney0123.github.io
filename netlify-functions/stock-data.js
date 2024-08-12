@@ -4,9 +4,9 @@ const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
     const apiKey = process.env.FINAZON_API_KEY; // Use environment variable for API key
-    const symbol = event.queryStringParameters.symbol || 'AAPL';
+    const symbol = event.queryStringParameters.symbol || 'INTC';
     try {
-        const response = await fetch(`https://api.finazon.com/stocks?symbol=${intc}`, {
+        const response = await fetch(`https://api.finazon.com/stocks?symbol=${INTC}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${eef3d37cdba74968bb848eafe07c65desu}`,
