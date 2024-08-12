@@ -3,4 +3,4 @@
   functions = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/netlify-functions/stock-data.js" # Replace with your functions directory
 
 [dev]
-  functions = "netlify/functions"
+  functions = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/netlify-functions/stock-data.js"
