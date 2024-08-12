@@ -1,3 +1,6 @@
 [build]
-  functions = "netlify-functions"
-  publish = "public
+  publish = "public" # Replace with your build output directory
+  functions = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/netlify-functions/stock-data.js" # Replace with your functions directory
+
+[dev]
+  functions = "netlify/functions"
