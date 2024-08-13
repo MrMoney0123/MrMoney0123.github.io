@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 exports.handler = async (event) => {
   const symbol = event.queryStringParameters.symbol;
   const apiKey = 'vJhPOOzE7kpWAA4huPb6RVLv0Z0D5uu0';  // Replace with your actual FMP API key
-  const url = `https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apiKey}`;
+  const url = `https://financialmodelingprep.com/api/v3/quote/AAPL?apikey=vJhPOOzE7kpWAA4huPb6RVLv0Z0D5uu0`;
 
   try {
     const response = await fetch(url);
