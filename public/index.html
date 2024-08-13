@@ -1,18 +1,17 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Data</title>
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Tracker</title>
+  <link rel="stylesheet" href="styles.css">  <!-- Link to CSS file if used -->
 </head>
 <body>
-    <h1>Stock Price Data</h1>
-    <div id="stock-data">
-        <p id="stock-symbol">Symbol: </p>
-        <p id="stock-time">Time: </p>
-        <p id="stock-price">Price: </p>
-    </div>
+  <h1>Stock Tracker</h1>
+  <input type="text" id="stock-symbol" placeholder="Enter Stock Symbol">
+  <button onclick="getStockData()">Get Stock Data</button>
+  <div id="stock-data"></div>
+
+  <script src="app.js"></script>
 </body>
 </html>
