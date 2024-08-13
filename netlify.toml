@@ -1,5 +1,5 @@
 [build]
-  publish = "public" # Replace with your build output directory
+  publish = "pu/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/public/" # Replace with your build output directory
   functions = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/public/" # Replace with your functions directory
 
 [dev]
