@@ -1,6 +1,6 @@
 [build]
-  publish = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/public" # Directory where your build output is located
-  functions = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/netlify-functions" # Directory for Netlify functions, if you use them
+  publish = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/public/" # Directory where your build output is located
+  functions = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/netlify-functions/" # Directory for Netlify functions, if you use them
 
 [dev]
-  functions = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/netlify-functions" # Directory for Netlify functions during local development
+  functions = "/Users/oliverdeighton/Documents/GitHub/MrMoney0123.github.io/netlify-functions/" # Directory for Netlify functions during local development
