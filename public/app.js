@@ -4,8 +4,15 @@ async function getStockData() {
   
     try {
       const response = await fetch(`/api/stock?symbol=${symbol}`);
-      const data = await response.json();
-      document.getElementById('stock-data').innerText = JSON.stringify(data, null, 2);
+      const text = await response.text(); // Get response as text
+  
+      try {
+        const data = JSON.parse(text); // Attempt to parse JSON
+        document.getElementById('stock-data').innerText = JSON.stringify(data, null, 2);
+      } catch (jsonError) {
+        console.error('Error parsing JSON:', jsonError);
+        document.getElementById('stock-data').innerText = 'Failed to parse JSON. Response was: ' + text;
+      }
     } catch (error) {
       console.error('Error fetching stock data:', error);
     }
